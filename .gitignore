@@ -1,0 +1,35 @@
+# Object files
+*.o
+
+# Libraries
+*.lib
+*.a
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.class
+
+#vim swap files
+*.swp
+
+#ignore save.csv because of privacy
+*.csv
+*.orig
+*.xoj
+
+#emacs autosave files
+*~
+
+bin/
+build/
+lib/
+onejar/
+res/
