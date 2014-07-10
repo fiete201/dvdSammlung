@@ -4,12 +4,12 @@ public class Film
 {
 
     private String titel;
-    private int jahr;
+    private short jahr;
     private String[] schauspieler;
     private String[] genre;
     private boolean isDVD;
 
-    public Film (String titel, int jahr, String[] schauspieler, String[] genre, boolean isDVD){
+    public Film (String titel, short jahr, String[] schauspieler, String[] genre, boolean isDVD){
 	this.titel = titel;
 	this.jahr = jahr;
 	this.schauspieler = schauspieler;
@@ -21,7 +21,7 @@ public class Film
 	return this.titel;
     }
 
-    public int getJahr(){
+    public short getJahr(){
 	return this.jahr;
     }
 
