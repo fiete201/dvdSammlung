@@ -31,23 +31,25 @@ public class Sammlung
 
 
     public ArrayList<Film> getAllFilms(){
+	
+		String query = "select * from Sammlung";
+		try{
+			Statement stmt = cn.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
 
-	String ttitel = "StarWars Epoisode 3";
-	short tjahr = 2004;
-	String[] tschauspieler = {"Ewan McGregor", "Hayden Christensen"};
-	String[] tgenre = {"Action", "SciFi"};
-	boolean tisDVD = true;
-
-	filmsammlung.add(new Film(ttitel, tjahr, tschauspieler, tgenre, tisDVD));
-
-	String ttitel2 = "Die Bourne Identität";
-	short tjahr2 = 2002;
-	String[] tschauspieler2 = {"Matt Damon", "Franka Potente"};
-	String tgenre2[] = {"Thriller","Action"};
-	boolean tisDVD2 = true;
-
-	filmsammlung.add(new Film(ttitel2, tjahr2, tschauspieler2, tgenre2, tisDVD2));
-
-	return filmsammlung;
+			while (rs.next()) {
+				String titel = rs.getString(1);
+				short jahr = rs.getShort(2);
+				String[] schauspieler = rs.getString(3).split(",");
+				String[] genre = rs.getString(4).split(",");
+				boolean isDVD = rs.getBoolean(5);
+				filmsammlung.add(new Film(titel, jahr, schauspieler, genre, isDVD));
+				}
+				rs.close();
+				stmt.close();
+		} catch(SQLException e){
+			System.out.println("SQLException: \n" + e);
+		}
+		return filmsammlung;
     }
 }
